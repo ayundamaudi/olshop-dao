@@ -33,7 +33,7 @@ public class OrderDetailImpl implements OrderDetailDAO{
 
 	@Override
 	public int orderDetailUpdate(OrderDetail orderDetail) throws Exception {
-		String sql = "update tb_order_detail set id_product=?, qty_product where id_order=?";
+		String sql = "update tb_order_detail set id_product=?, qty_product=? where id_order=?";
 		PreparedStatement pst = conn.prepareStatement(sql);
         pst.setInt(1, orderDetail.getProduct().getIdProduct());
         pst.setInt(2, orderDetail.getQtyProduct());

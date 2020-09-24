@@ -8,12 +8,10 @@ import dao.BrandDAO;
 import dao.connection.MySqlConnection;
 import dao.impl.BrandImpl;
 import entity.Brand;
-import entity.Brand2;
 
 public class MainAppBrand {
     static BrandDAO dao = new BrandImpl(MySqlConnection.getConnection());
     static Brand brand = new Brand();
-    static Brand2 brand2 = new Brand2();
 
     public static void main(final String[] args) throws Exception {
         int option = 0;
@@ -76,9 +74,8 @@ public class MainAppBrand {
     private static void delete(BufferedReader input) throws Exception {
         System.out.print("Input ID Brand : ");
         int id = (Integer.parseInt(input.readLine()));
-        Brand brand = dao.brandFindById(id);
-        int affectedRow = dao.brandUpdate(brand);
-        affectedRow = dao.brandDelete(id);
+        dao.brandFindById(id);
+        int affectedRow = dao.brandDelete(id);
         System.out.println("==================");
         System.err.println("delete " + affectedRow + " row");
         System.out.println("==================");
